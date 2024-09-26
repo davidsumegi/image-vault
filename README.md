@@ -40,7 +40,7 @@ Open Swagger UI at http://localhost:8080/swagger-ui
 
 ## Key features
 
-- Upload a file via `POST /api/files`
+- Upload a file via `POST /api/file`
     - Only JPG and PNG files are accepted with correct content
     - Images not fitting into 5000x5000 pixels are resized
     - Images are stored in a database using AES encryption
