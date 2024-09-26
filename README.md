@@ -6,7 +6,7 @@ The images are resized (if needed), stored in a PostgreSQL database in an encryp
 
 The uploaded images can then be downloaded individually or zipped.
 
-## How to run
+## How to run the service
 
 Make sure these are already installed:
 
@@ -87,12 +87,12 @@ Open Swagger UI at http://localhost:8080/swagger-ui
     - However, the `file` table is created automatically on startup if it doesn't exist
 - IMPORTANT! When storing the first image, a `secretKey` file is generated in the root for the encryption
     - This file must not be deleted, otherwise all stored images will be unrecoverable
-    - If the file is lost, the `file` database table may be dropped and the `imagevault` service restarted
+    - If the file is lost, the `file` table should be purged
 
 ## Exception handling
 
 - User issues:
-    - The <i>checked</i> `UploadException` contains an `UploadErrorMessage` referring
+    - The <i>checked</i> `UploadException` contains an `ErrorType` referring
       to the nature of the problem
     - These are returned in a JSON response already described above
 - Server issues:

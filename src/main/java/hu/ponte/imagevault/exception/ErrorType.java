@@ -1,6 +1,6 @@
 package hu.ponte.imagevault.exception;
 
-public enum UploadErrorMessage {
+public enum ErrorType {
     MISSING_EXTENSION,
     UNSUPPORTED_EXTENSION,
     EMPTY_FILE,

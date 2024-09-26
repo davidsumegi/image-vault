@@ -44,7 +44,7 @@ public class UploadEndpoints {
         try {
             uploadService.resizeAndSaveToDb(file);
         } catch (UploadException e) {
-            result = e.getUploadErrorMessage().name();
+            result = e.getErrorType().name();
         }
         return Map.of(file.getOriginalFilename(), result);
     }
@@ -63,7 +63,7 @@ public class UploadEndpoints {
             try {
                 uploadService.resizeAndSaveToDb(file);
             } catch (UploadException e) {
-                result = e.getUploadErrorMessage().name();
+                result = e.getErrorType().name();
             }
             results.put(file.getOriginalFilename(), result);
         }

@@ -6,10 +6,10 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class UploadException extends Exception {
-    private final UploadErrorMessage uploadErrorMessage;
+    private final ErrorType errorType;
 
-    public UploadException(UploadErrorMessage uploadErrorMessage, Throwable cause) {
+    public UploadException(ErrorType errorType, Throwable cause) {
         super(cause);
-        this.uploadErrorMessage = uploadErrorMessage;
+        this.errorType = errorType;
     }
 }
