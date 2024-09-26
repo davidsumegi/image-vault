@@ -1,7 +1,7 @@
 package hu.ponte.imagevault.service;
 
 import hu.ponte.imagevault.db.FileRepository;
-import hu.ponte.imagevault.exception.UploadErrorMessage;
+import hu.ponte.imagevault.exception.ErrorType;
 import hu.ponte.imagevault.exception.UploadException;
 import hu.ponte.imagevault.model.File;
 import hu.ponte.imagevault.service.resize.ResizeService;
@@ -27,25 +27,25 @@ public class UploadService {
         try {
             return file.getBytes();
         } catch (IOException e) {
-            throw new UploadException(UploadErrorMessage.WRONG_CONTENT);
+            throw new UploadException(ErrorType.WRONG_CONTENT);
         }
     }
 
     private static String checkExtension(MultipartFile file) throws UploadException {
         var fileName = file.getOriginalFilename();
         if (!fileName.contains(".")) {
-            throw new UploadException(UploadErrorMessage.MISSING_EXTENSION);
+            throw new UploadException(ErrorType.MISSING_EXTENSION);
         }
         var extension = fileName.substring(fileName.lastIndexOf('.')).toLowerCase();
         if (!File.SUPPORTED_EXTENSIONS.contains(extension)) {
-            throw new UploadException(UploadErrorMessage.UNSUPPORTED_EXTENSION);
+            throw new UploadException(ErrorType.UNSUPPORTED_EXTENSION);
         }
         return extension;
     }
 
     public void resizeAndSaveToDb(MultipartFile file) throws UploadException {
         if (file.isEmpty()) {
-            throw new UploadException(UploadErrorMessage.EMPTY_FILE);
+            throw new UploadException(ErrorType.EMPTY_FILE);
         }
         var fileName = file.getOriginalFilename();
         var extension = checkExtension(file);

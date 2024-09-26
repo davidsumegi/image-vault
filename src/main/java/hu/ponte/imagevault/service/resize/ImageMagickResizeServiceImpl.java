@@ -1,7 +1,7 @@
 package hu.ponte.imagevault.service.resize;
 
 import hu.ponte.imagevault.exception.ResizeException;
-import hu.ponte.imagevault.exception.UploadErrorMessage;
+import hu.ponte.imagevault.exception.ErrorType;
 import hu.ponte.imagevault.exception.UploadException;
 import org.im4java.core.ConvertCmd;
 import org.im4java.core.IMOperation;
@@ -29,7 +29,7 @@ public class ImageMagickResizeServiceImpl implements ResizeService {
         try {
             identifyCmd.run(imOperation);
         } catch (Exception e) {
-            throw new UploadException(UploadErrorMessage.WRONG_CONTENT, e);
+            throw new UploadException(ErrorType.WRONG_CONTENT, e);
         }
 
         return ((ArrayListOutputConsumer) arrayListOutputConsumer).getOutput().get(0).split(" ");
@@ -55,7 +55,7 @@ public class ImageMagickResizeServiceImpl implements ResizeService {
             try {
                 cmd.run(op);
             } catch (Exception e) {
-                throw new UploadException(UploadErrorMessage.WRONG_CONTENT, e);
+                throw new UploadException(ErrorType.WRONG_CONTENT, e);
             }
             return Files.readAllBytes(outputFile.toPath());
         } catch (IOException e) {
