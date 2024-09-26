@@ -32,7 +32,8 @@ mvn spring-boot:run -Dspring-boot.run.arguments=" \
 --spring.datasource.url=jdbc:postgresql://localhost:5432/{db} \
 --spring.datasource.username={login} \
 --spring.datasource.password={pass} \
---imagemagick.searchpath=/path/to/imagemagick={path} \"
+--imagemagick.searchpath=/path/to/imagemagick={path} \
+"
 ```
 
 Open Swagger UI at http://localhost:8080/swagger-ui
