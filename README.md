@@ -25,7 +25,7 @@ java -jar target/image-vault-1.0.jar \
 --imagemagick.searchpath={path}
 ```
 
-Altrenatively, use`spring-boot:run` to enjoy hot reload during development:
+Alternatively, use`spring-boot:run` to enjoy hot reload during development:
 
 ```bash
 mvn spring-boot:run -Dspring-boot.run.arguments=" \
